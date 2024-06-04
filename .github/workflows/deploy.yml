@@ -24,7 +24,7 @@ jobs:
         context: .
         file: ./docker/Dockerfile.user
         push: true
-        tags: shiva1807/qucikpay:user
+        tags: shiva1807/quickpay:user
 
     - name: Verify Pushed Image
       run: docker pull shiva1807/quickpay:user

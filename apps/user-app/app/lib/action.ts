@@ -2,7 +2,6 @@
 
 import prisma from "@repo/db/client";
 
-
 export async function getUsers(){
     const users=await prisma.user.findMany({
         select:{

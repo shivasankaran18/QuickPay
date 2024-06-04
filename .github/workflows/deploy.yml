@@ -39,4 +39,4 @@ jobs:
           sudo docker pull shiva1807/quickpay:user
           sudo docker stop user-app || true
           sudo docker rm user-app || true
-          sudo docker run -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e NEXTAUTH_URL:http://localhost:3001 -d --name user-app -p 3001:3001 shiva1807/quickpay:user
+          sudo docker run -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e NEXTAUTH_URL=http://ec2-16-171-197-171.eu-north-1.compute.amazonaws.com:3001 -d --name user-app -p 3001:3001 shiva1807/quickpay:user

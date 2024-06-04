@@ -26,9 +26,7 @@ jobs:
         push: true
         tags: shiva1807/quickpay:user
 
-    - name: Verify Pushed Image
-      run: docker pull shiva1807/quickpay:user
-    
+  
     - name: Deploy to EC2 user
       uses: appleboy/ssh-action@master
       with:
@@ -59,4 +57,5 @@ jobs:
           sudo docker pull shiva1807/quickpay:merchant
           sudo docker stop merchant-app || true
           sudo docker rm merchant-app || true
+          sudo docker system prune
           sudo docker run -e DATABASE_URL=${{ secrets.DATABASE_URL }} -e NEXTAUTH_URL=http://ec2-16-171-197-171.eu-north-1.compute.amazonaws.com:3000 -e AUTH_GOOGLE_ID=${{ secrets.MERCHANT_GOOGLE_ID}} -e AUTH_GOOGLE_SECRET=${{ secrets.MERCHANT_GOOGLE_SECRET}} -d --name merchant-app -p 3000:3000 shiva1807/quickpay:merchant

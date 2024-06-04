@@ -1,0 +1,98 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Looking for ways to speed up your queries, or scale easily with your serverless or edge functions?
+// Try Prisma Accelerate: https://pris.ly/cli/accelerate-init
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+model User {
+  id                Int                 @id @default(autoincrement())
+  email             String             @unique
+  name              String?          @default("User")
+  password          String     @default("")
+  OnRampTransaction OnRampTransaction[]
+  Balance           Balance?
+  sentTransfers  P2P[]  @relation(name:"FromUserRelation")
+  receivedTransfers P2P[] @relation(name:"ToUserRelation")
+  merchantTrans  merchTransaction[]
+}
+
+model OffRamp{
+  id Int @id @default(autoincrement())
+  amount Int
+  receiver String
+  timestamp DateTime
+  merchname String
+  merc merchant @relation(fields: [merchname],references: [name],onDelete: Cascade)
+}
+
+model merchant {
+  id        Int      @id @default(autoincrement())
+  email     String   @unique
+  name      String   @unique
+  mer_amount Int 
+  password String?  @default("")
+  trans  merchTransaction[]
+  withdrawn OffRamp[]
+ 
+}
+
+model merchTransaction{
+  id Int @id @default(autoincrement())
+  merchantName String
+  userId Int 
+  timestamp DateTime
+  amount Int
+  user User @relation(fields: [userId],references: [id])
+  merchant merchant @relation(fields: [merchantName],references: [name],onDelete: Cascade)
+}
+
+model OnRampTransaction {
+  id        Int          @id @default(autoincrement())
+  status    OnRampStatus
+  token     String       @unique
+  provider  String
+  amount    Int
+  startTime DateTime
+  userId    Int
+  user      User         @relation(fields: [userId], references: [id],onDelete: Cascade)
+}
+
+model Balance {
+  id     Int  @id @default(autoincrement())
+  userId Int  @unique
+  amount Int
+  locked Int
+  user   User @relation(fields: [userId], references: [id],onDelete: Cascade)
+}
+
+model P2P {
+  id         Int          @id @default(autoincrement())
+  amount     Int
+  timestamp  DateTime
+  fromUserId Int
+  fromUser   User         @relation(name: "FromUserRelation", fields: [fromUserId], references: [id])
+  toUserId   Int
+  toUser     User         @relation(name: "ToUserRelation", fields: [toUserId], references: [id])
+}
+
+
+enum AuthType {
+  Google
+  CredentialsProvider
+}
+
+enum OnRampStatus {
+  Success
+  Failure
+  Processing
+}

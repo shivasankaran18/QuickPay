@@ -54,6 +54,7 @@ jobs:
         username: ${{ secrets.SSH_USERNAME }}
         key: ${{ secrets.SSH_KEY }}
         script: |
+          sudo docker image prune -a
           sudo docker pull shiva1807/quickpay:merchant
           sudo docker stop merchant-app || true
           sudo docker rm merchant-app || true

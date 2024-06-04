@@ -19,7 +19,7 @@ async function getOnRampTransactions(status: any) {
       status: t.status,
       provider: t.provider,
     }))
-    console.log(arr);
+  
     return arr.reverse();
   }
   

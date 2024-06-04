@@ -6,7 +6,8 @@
     "dev": "turbo dev",
     "lint": "turbo lint",
     "format": "prettier --write \"**/*.{ts,tsx,md}\"",
-    "start-userapp" :"cd ./apps/user-app && npm run start "
+    "start-userapp" :"cd ./apps/user-app && npm run start ",
+    "start-merchantapp" :"cd ./apps/merchant-app && npm run start"
     
   },
   "devDependencies": {

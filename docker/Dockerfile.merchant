@@ -15,4 +15,5 @@ RUN cd packages/db &&   npx prisma generate && cd ../..
 
 RUN npm run build
 
+
 CMD ["npm", "run", "start-merchantapp"]

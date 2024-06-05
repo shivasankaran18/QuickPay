@@ -1,20 +1,15 @@
-- Clone the repo
+# Introducing QuickPay
 
-```jsx
-git clone https://github.com/100xdevs-cohort-2/week-17-final-code
-```
+- It is built for both users and merchants
+- A user can signin/signup
+    - Add money to his/her wallet from his registered banks
+    - Transfer money to other users 
+    - Pay to registered merchants
+    - Track all his/her transactions
 
-- npm install
-- Run postgres either locally or on the cloud (neon.tech)
+- A merchant can signin/signup
+    - Track all the transactions received from the users
+    - Withdraw money to his/her banks from the wallet
 
-```jsx
-docker run  -e POSTGRES_PASSWORD=mysecretpassword -d -p 5432:5432 postgres
-```
-
-- Copy over all .env.example files to .env
-- Update .env files everywhere with the right db url
-- Go to `packages/db`
-    - npx prisma migrate dev
-    - npx prisma db seed
-- Go to `apps/user-app` , run `npm run dev`
-- Try logging in using phone - 1111111111 , password - alice (See `seed.ts`)
+- Click for user signup : http://ec2-16-171-169-198.eu-north-1.compute.amazonaws.com:3001
+- Click for merchant signup : http://ec2-16-171-169-198.eu-north-1.compute.amazonaws.com:3000

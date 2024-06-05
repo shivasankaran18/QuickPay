@@ -13,7 +13,7 @@ import { getMerchants, getUsers } from "../app/lib/action";
 import { Spinner } from "@repo/ui/spinner";
 import { Toast } from "@repo/ui/toast";
 
-const BACKEND_URL="http://ec2-16-171-197-171.eu-north-1.compute.amazonaws.com:3001"
+const BACKEND_URL="http://ec2-16-171-169-198.eu-north-1.compute.amazonaws.com:3001"
 
 
 

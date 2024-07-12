@@ -11,7 +11,7 @@ import {  useRouter } from "next/navigation";
 import axios from "axios";
 import { Toast } from "@repo/ui/toast";
 
-const BACKEND_URL="http://ec2-16-171-169-198.eu-north-1.compute.amazonaws.com:3001"
+const BACKEND_URL="http://ec2-13-51-72-244.eu-north-1.compute.amazonaws.com:3001"
 
 const SUPPORTED_BANKS = [
     {name: "HDFC Bank"}, 

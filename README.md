@@ -12,4 +12,4 @@
     - Withdraw money to his/her banks from the wallet
 
 - Click for user signup : http://ec2-13-51-72-244.eu-north-1.compute.amazonaws.com:3001
-- Click for merchant signup : http://ec2-13-51-72-244.eu-north-1.compute.amazonaws.com:3001
+- Click for merchant signup : http://ec2-13-51-72-244.eu-north-1.compute.amazonaws.com:3000
